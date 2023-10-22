@@ -1,0 +1,27 @@
+$couleurprimaire:#E85C1C;
+$couleursecondaire:#060128;
+$couleurtertiaire:#060128;
+$couleurtertiairelight:#590e85;
+$couleurbleuciel:#C9DDF1;
+$couleurwhitedark:#c4c4c4;
+$couleurwhite:#ffffff;
+$bordercontainer:#d4d4d4;
+$couleurfondbody:#f7f7f7;
+$couleurtexte:#333333;
+
+/*Les points de rupture [breakpoints]
+* Ecran petit >= 576px [$smallDevice]
+* Ecran moyen >= 768px [$mediumDevice]
+* Ecran large >= 992px [$largeDevice]
+* Ecran Extra large >= 1200px [$XlargeDevice]
+* Ecran Extra extra large >= 1400px [$XXlargeDevice]
+*/
+$smallDevice: 576;
+$mediumDevice: 768;
+$largeDevice:992;
+$XlargeDevice:1200;
+$XXlargeDevice:1400;
+
+
+
+
