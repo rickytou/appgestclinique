@@ -150,11 +150,6 @@ $('.temoignages__navigation__left').on('click',function(){
   });
   temoignages[0].classList.add('active');
   $(this).removeClass('active');
-  $('.temoignages__navigation__right').addClass('active');
-
-
-  
-    
+  $('.temoignages__navigation__right').addClass('active');    
 });
-
 });

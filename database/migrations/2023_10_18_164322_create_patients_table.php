@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string("adressePatient", 255);
             $table->string("telephonePatient",13);
             $table->string("NumeroAssMalPatient",9)->unique();
-            $table->enum("groupSanguin", ['A+','A-','B+','B-','O+','O-']);
+            $table->enum("groupSanguin", ['A+','A-','B+','B-','O+','O-','AB+','AB-']);
+            $table->enum("statutPatient", ['actif','inactif','en attente']);
             $table->text('noteDossier')->nullable();
             $table->timestamps();
         });
