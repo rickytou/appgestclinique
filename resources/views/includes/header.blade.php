@@ -36,7 +36,7 @@
           </a>
         </li>--}}
         <li>
-          <a href="{{ url('/patient/create-patient')  }}"><span class="menuLinkHidden">Connexion</span><span class="fa-regular fa-circle-user"></span>
+          <a href="{{ url('/user/login')  }}"><span class="menuLinkHidden">Connexion</span><span class="fa-regular fa-circle-user"></span>
         </a>
         </li>
       </ul>

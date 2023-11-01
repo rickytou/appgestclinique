@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\MedecinController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,8 +31,14 @@ Route::get('/contact', function(){
 Route::get('/admin/home', function(){
     return view('admin.home');
 });
-    Route::prefix('patient')->group(function(){
-        Route::get('/create-patient', [PatientController::class,'createpatient']);
-    });
+ Route::prefix('patient')->group(function(){
+    Route::get('/adminpatient', [PatientController::class,'adminpatient']);
+    Route::post('/savepatient', [PatientController::class,'savepatient']);
+});
+
+Route::prefix('user')->group(function(){
+    Route::get('/login', [UserController::class,'login']);
+    Route::get('/admin', [UserController::class,'admin']);
+});
 
 

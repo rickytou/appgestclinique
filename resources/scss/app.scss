@@ -363,7 +363,7 @@ a:hover{
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: #000;
+  color: $couleurwhite;
  
 }
 .container__services.active .services__left__box__label{
@@ -702,12 +702,12 @@ blockquote p + i{
   justify-content: center;
   gap: 2rem;
   font-size:1.2rem;
-  padding: 0.5rem 0;
 }
 .footer__copyright{
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size:1.2rem;
 }
 .footer__copyright span:nth-child(3){
   display: none;
@@ -716,6 +716,56 @@ blockquote p + i{
   cursor: pointer;
   font-size: 1.6rem;
 }
+/* Page description Service */
+
+.section-services-details{
+  display: flex;
+  padding: 0 1rem;
+  flex-direction: column;
+  gap: 2rem;
+}
+.section-services-details-left{
+  padding-top: 3rem;  
+  width: 30%;
+  min-width: 32rem;
+  
+  & p {
+    margin-top: 1rem;
+
+    & span{
+      display: block;
+      
+      font-size: 5.2rem;
+      font-weight: bold;
+      line-height: 1.25;
+    }
+
+    & span:nth-child(1){
+      color: $couleurtertiairelight;
+      font-size: 6.4rem;
+    }
+    & span:nth-child(2),
+    & span:nth-child(3){
+      color: $couleursecondaire;
+    }
+  }
+}
+
+.section-services-desc{
+  margin-top: 3rem;
+}
+.section-services-details-right{
+  width: calc(80% - 2rem);
+  padding-top: 12rem;  
+  text-align: right;
+}
+.section-services-details-right img{
+  width: 100%;
+  max-width: 70rem;
+}
+
+
+
 .section_page_medecin_center{
   padding-left: 2rem;
   padding-right: 2rem;
@@ -793,6 +843,47 @@ blockquote p + i{
     margin-top: 2rem;
   }
 }
+/* Section login */
+.section-login-center{
+  padding: 3rem 1rem;
+  
+
+  & strong{
+    display: block;
+    line-height: 1.5;
+    color: $couleursecondaire;
+    margin-bottom: 3rem;
+    font-size: 2.8rem;
+  }
+  .section-login-center-left{
+    margin: 6rem 0;
+  }
+  .connexion-utilisateur{
+    border: 0.1rem solid $bordercontainer;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: $couleurwhite;
+    font-size: 1.6rem;
+
+   
+    input[type="text"], input[type="password"], button[type="submit"]{
+      padding: 1.25rem 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+    }
+    button[type="submit"]{
+      width: 100%;
+      background: transparent;
+      color: $couleursecondaire;
+      border: 0.1rem solid $bordercontainer;
+    }
+  }
+}
+
+/* Fin login */
+
+
+
 /* Taille d'ecran minimal 576px */
 @media screen and (min-width:#{$smallDevice * 1px}) {
   .sectionCliniqueGroup{
@@ -859,15 +950,15 @@ blockquote p + i{
   display: block;
 }
 
-/* Footer */
-.footer__copyright{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 2;
+/* Section login */
+/* Section login */
+.section-login-center{
+  padding: 3rem;
+  justify-content: space-between;
 }
-.footer__copyright span:nth-child(3){
-  display: inline;
+
+.section-login-center-right{
+  max-width: 36rem;
 }
 }
 
@@ -881,9 +972,10 @@ blockquote p + i{
    .equipe,
    .contact,
    .temoignages,
+   .section-login-center,
    .footer{
-     padding-left: 2rem;
-     padding-right: 2rem;
+     padding-left: 3rem;
+     padding-right: 3rem;
    }
 .headerTop{
   width: 100%;
@@ -896,7 +988,21 @@ blockquote p + i{
 .sectionClinique{
   padding: 3rem 2rem;
 }
-
+.section-login-center{
+  display: flex;
+  gap: 2rem;
+}
+.section-login-center-left{
+  width: calc(40% - 1rem);
+}
+.section-login-center-right{
+  width: calc(60% - 1rem);
+  margin-top: 9rem;
+  align-self: center;
+}
+.section-login-center .section-login-center-left{
+  margin-top: 9rem;
+}
 .navigation{
   padding-top: 0;
   padding-bottom: 0;
@@ -1017,6 +1123,15 @@ blockquote p + i{
 .services__bottom hr{
   display: block;
 }
+.section-services-details-left{
+  padding-top: 9rem;  
+  width: 30%;
+  min-width: 32rem;
+  
+  & p {
+    margin-top: 9rem;
+  }
+}
 .container__services.active .services__left__box__label{
   font-size: 1.4rem;
 }
@@ -1074,6 +1189,16 @@ blockquote p + i{
 .section_page_medecin_main_right{
   width: 20%;
 }
+/* Footer */
+.footer__copyright{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2;
+}
+.footer__copyright span:nth-child(3){
+  display: inline;
+}
 
 }
 
@@ -1096,6 +1221,14 @@ blockquote p + i{
  .galeries{
   height: 60rem;
  }
+
+.section-login-center-left{
+  width: calc(50% - 1rem);
+}
+.section-login-center-right{
+  width: calc(50% - 1rem);
+  align-self: flex-start;
+}
 }
 
 /* Taille d'ecran minimal 1200px */
@@ -1110,6 +1243,7 @@ blockquote p + i{
     .contact,
     .temoignages,
     .footer,
+    .section-login-center,
     .section_page_medecin_center{
       width: 120rem;
       margin: auto;
@@ -1125,5 +1259,11 @@ blockquote p + i{
   }
   .sectionCliniqueGroup__{
     width: calc(25% - 1.5rem);
+  }
+  .section-services-details{
+    width: 120rem;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: row;
   }
 }

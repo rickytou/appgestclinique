@@ -1,5 +1,4 @@
 import './bootstrap';
-
 $(function(){
   /* Ajout de la classe onOffMenuBurger sur le menu  et le menuburger*/
   $('.menuburger').on('click',function(){

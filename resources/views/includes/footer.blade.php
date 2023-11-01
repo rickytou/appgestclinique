@@ -12,8 +12,8 @@
       <li><a href="#">Misson</a></li>
       <li><a href="#">Partenaires</a></li>
       <li><a href="#">Carri&egrave;res</a></li>
-      <li><a href="#">Termes et conditions</a></li>  
+      <li><a href="#">Termes</a></li>  
     </ul>
     <!-- Copyright et contact du webmaster -->
-    <p class="footer__copyright"><span>Clinique Jeannot Cadet@2023</span><span> Tous droits r&eacute;serv&eacute;s</span> <span>|</span> <span>Conception par : Ricardo Samedi</span></p>
+    <p class="footer__copyright"><span>Clinique Jeannot Cadet@2023</span><span> Tous droits r&eacute;serv&eacute;s</span> <span> | </span> <span>Conception par : Ricardo Samedi</span></p>
   </div>
