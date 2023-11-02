@@ -1,31 +1,33 @@
 @extends('layout.layoutbackend')
+@Section('title')
+<title>Clinique Jeannot Cadet | Enregistrer un patient</title>
+@endSection
 @section('content')
 @include('includes.header-backend')
 <!-- Fin Navigation -->
 <main>
-  <div class="main">
-    <h1>Formulaire d'Inscription du Patient</h1>
-
-    <form class="form-horizontal" method="POST" action="{{url('patient/savepatient')}}">
+  <div class="main form-insert">
+    <form class="form-horizontal" method="POST" action="{{ route("patient.save") }}">
       @csrf
       <fieldset>      
       <!-- Form Name -->
-        <legend>Enregistrer un patient</legend>
-      
+        <legend>Enregistrer un nouveau patient</legend>
+        <p class="text-danger">Tous les champs avec un ast&eacute;risque sont obligatoires</p>
+     
       <!-- Text input-->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="nompatient">Nom</label>  
+        <label class="col-md-4 control-label" for="nompatient">Nom <span class="text-danger">*</span></label>  
         <div class="col-md-6">
-        <input id="nompatient" name="nompatient" type="text" placeholder="nom du patient" class="form-control input-md" required="">
+        <input id="nompatient" name="nompatient" type="text" placeholder="nom du patient" class="form-control input-md" required>
           
         </div>
       </div>
       
       <!-- Text input-->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="prenompatient">Prenom</label>  
+        <label class="col-md-4 control-label" for="prenompatient">Pr&eacute;nom <span class="text-danger">*</span></label>  
         <div class="col-md-6">
-        <input id="prenompatient" name="prenompatient" type="text" placeholder="prenom du patient" class="form-control input-md" required="">
+        <input id="prenompatient" name="prenompatient" type="text" placeholder="pr&eacute;nom du patient" class="form-control input-md" required>
           
         </div>
       </div>
@@ -40,15 +42,15 @@
           </label> 
           <label class="radio-inline" for="sexePatient-1">
             <input type="radio" name="sexePatient" id="sexePatient-1" value="f">
-            Feminin
+            F&eacute;minin
           </label>
         </div>
       </div>
       
       <!-- Textarea -->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="adressepatient">Adresse</label>
-        <div class="col-md-4">                     
+        <label class="col-md-4 control-label" for="adressepatient">Adresse <span class="text-danger">*</span></label>
+        <div class="col-md-6">                     
           <textarea class="form-control" id="adressepatient" name="adressepatient"></textarea>
         </div>
       </div>
@@ -57,16 +59,16 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for="courrielpatient">Courriel</label>  
         <div class="col-md-6">
-        <input id="courrielpatient" name="courrielpatient" type="text" placeholder="adresse email" class="form-control input-md" required="">
+        <input id="courrielpatient" name="courrielpatient" type="text" placeholder="adresse email" class="form-control input-md">
           
         </div>
       </div>
       
       <!-- Text input-->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="numassmalpatient">NAM</label>  
+        <label class="col-md-4 control-label" for="numassmalpatient">Num. Ass. M&eacute;d. <span class="text-danger">*</span></label>  
         <div class="col-md-6">
-        <input id="numassmalpatient" name="numassmalpatient" type="text" placeholder="Numero Assurance Maladie" class="form-control input-md" required="">
+        <input id="numassmalpatient" name="numassmalpatient" type="text" placeholder="Numero Assurance Maladie" class="form-control input-md" required>
           
         </div>
       </div>
@@ -125,20 +127,27 @@
         </div>
         </div>
       </div>
+
+       <!-- Text input-->
+       <div class="form-group">
+        <label class="col-md-4 control-label" for="dateNaissancePatient">Date naissance <span class="text-danger">*</span></label>  
+        <div class="col-md-6">
+        <input id="dateNaissancePatient" name="dateNaissancePatient" type="date" class="form-control input-md" required>          
+        </div>
+      </div>
       
       <!-- Text input-->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="telephonepatient">Telephone</label>  
+        <label class="col-md-4 control-label" for="telephonepatient">T&eacute;l&eacute;phone <span class="text-danger">*</span></label>  
         <div class="col-md-6">
-        <input id="telephonepatient" name="telephonepatient" type="text" placeholder="" class="form-control input-md" required="">
-          
+        <input id="telephonepatient" name="telephonepatient" type="text" placeholder="Format : 514-1112222" class="form-control input-md" required>          
         </div>
       </div>
       
       <!-- Textarea -->
       <div class="form-group">
         <label class="col-md-4 control-label" for="notedossier">Note</label>
-        <div class="col-md-4">                     
+        <div class="col-md-6">                     
           <textarea class="form-control" id="notedossier" name="notedossier"></textarea>
         </div>
       </div>
@@ -166,7 +175,7 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <button id="" name="" class="btn btn-primary">Enregistrer un patient</button>
+          <button class="btn btn-primary">Enregistrer un patient</button>
         </div>
       </div>
       

@@ -13,11 +13,11 @@
         <form class="connexion-utilisateur" action="/user/admin">
           <div class="form-group">
             <label for="nomutilisateur">Nom utilisateur</label>
-            <input type="text" class="form-control" id="nomutilisateur" aria-describedby="nomUtilisateurHelp" placeholder="nom utilisateur">
+            <input type="text" class="form-control" id="nomutilisateur" aria-describedby="nomUtilisateurHelp" placeholder="nom utilisateur" required>
             </div>
           <div class="form-group">
             <label for="motdepasse">Mot de passe</label>
-            <input type="password" class="form-control" id="motdepasse" placeholder="Mot de passe">
+            <input type="password" class="form-control" id="motdepasse" placeholder="Mot de passe" required>
           </div>
           <button type="submit" class="btn btn-primary">Connexion</button>
         </form>

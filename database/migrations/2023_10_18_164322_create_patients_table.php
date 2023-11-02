@@ -17,13 +17,14 @@ return new class extends Migration
             $table->string("nomPatient",50);
             $table->string("prenomPatient",50);
             $table->string("courrielPatient",30)->unique()->nullable();
-            $table->char("sexe",1);
+            $table->char("sexePatient",1);
             $table->string("adressePatient", 255);
             $table->string("telephonePatient",13);
             $table->string("NumeroAssMalPatient",9)->unique();
             $table->enum("groupSanguin", ['A+','A-','B+','B-','O+','O-','AB+','AB-']);
             $table->enum("statutPatient", ['actif','inactif','en attente']);
             $table->text('noteDossier')->nullable();
+            $table->date('dateNaissancePatient');
             $table->timestamps();
         });
 

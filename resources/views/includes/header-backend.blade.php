@@ -16,8 +16,8 @@
     <!-- Fin Menu Login -->
     <!-- Logo Dashboard -->
     <p class="dashboardIcon active">
-      <span class="fa-solid fa-gauge-high"></span>
-      <a href="#">Dashboard</a>
+      <a href="{{route('admin.show')}}" class="fa-solid fa-gauge-high"></a>
+      <a href="{{route('admin.show')}}">Dashboard</a>
     </p>
     <!-- Fin Logo Dashboard -->
     <!-- Menu Admin -->
@@ -29,10 +29,14 @@
         <ul class="menu-list-item-sub-menu">
           <li>
             <span class="fa-solid fa-circle-plus"></span>
-            <a href="{{url('patient/adminpatient')}}">Ajouter un patient</a>
+            <a href="{{route('patient.show')}}">Ajouter un patient</a>
           </li>
           <li>
-            <span class="fa-solid fa-rectangle-list"></span>
+            <span class="fa-solid fa-circle-plus"></span>
+            <a href="{{route('patient.show')}}">Ant&eacute;c&eacute;dent m&eacute;dical</a>
+          </li>
+          <li>
+            <span class="fa-solid fa-list"></span>
             <a href="#">Liste patient</a>
           </li>
           <div class="menu-login-bloc-design"></div>
@@ -45,18 +49,22 @@
         <ul class="menu-list-item-sub-menu">
           <li>
             <span class="fa-solid fa-circle-plus"></span>
-            <a href="#">Ajouter disponibilit&eacute;</a>
+            <a href="/medecin/ajoutermedecin">Ajouter un m&eacute;decin</a>
           </li>
           <li>
-            <span class="fa-solid fa-rectangle-list"></span>
-            <a href="#">Demander cong&eacute;</a>
+            <span class="fa-solid fa-toggle-on"></span>
+            <a href="{{ route("disponibilite.show") }}">Ajouter disponibilit&eacute;</a>
           </li>
           <li>
-            <span class="fa-solid fa-rectangle-list"></span>
+            <span class="fa-solid fa-stopwatch"></span>
+            <a href="{{ route("conge.show") }}">Prendre cong&eacute;</a>
+          </li>
+          <li>
+            <span class="fa-solid fa-list"></span>       
             <a href="#">Voir disponibilite</a>
           </li>
           <li>
-            <span class="fa-solid fa-rectangle-list"></span>
+            <span class="fa-solid fa-list"></span> 
             <a href="#">Liste cong&eacute;</a>
           </li>
           <div class="menu-login-bloc-design"></div>
@@ -69,10 +77,10 @@
         <ul class="menu-list-item-sub-menu">
           <li>
             <span class="fa-solid fa-circle-plus"></span>
-            <a href="#">C&eacute;duler rendez-vous</a>
+            <a href="{{ route("rendezvous.show") }}">C&eacute;duler rendez-vous</a>
           </li>
           <li>
-            <span class="fa-solid fa-rectangle-list"></span>
+            <span class="fa-solid fa-list"></span>
             <a href="#">Liste rendez-vous</a>
           </li>
           <div class="menu-login-bloc-design"></div>
@@ -80,7 +88,7 @@
      </li>
      <li class="menu-list-item">
         <span class="fa-solid fa-eye"></span>
-        <a href="#">Consultation</a>
+        <a href="#">Visites</a>
         <span class="fa-solid fa-chevron-down arrow-down"></span>
      </li>
     </ul>

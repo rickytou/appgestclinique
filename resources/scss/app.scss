@@ -959,6 +959,8 @@ blockquote p + i{
 
 .section-login-center-right{
   max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 }
 
@@ -990,7 +992,10 @@ blockquote p + i{
 }
 .section-login-center{
   display: flex;
+  min-height: 80vh;
+  align-items: center;
   gap: 2rem;
+
 }
 .section-login-center-left{
   width: calc(40% - 1rem);
@@ -1227,7 +1232,6 @@ blockquote p + i{
 }
 .section-login-center-right{
   width: calc(50% - 1rem);
-  align-self: flex-start;
 }
 }
 

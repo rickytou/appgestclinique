@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@400;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
   {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}" /> --}}
   @vite(['resources/scss/backend.scss', 'resources/js/appbackend.js'])
-  <title>Clinique Jeannot Cadet | Administration</title>
+ @yield('title')
 </head>
 <body>
   <div class="wrapper">

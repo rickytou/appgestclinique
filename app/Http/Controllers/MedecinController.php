@@ -22,4 +22,10 @@ class MedecinController extends Controller
         }
      
     }
+    /*
+    * Fonction permettant d'afficher le formulaire 
+    */
+    public function formAddMedecin(){
+        return view("medecins.addmedecin");
+    }
 }
