@@ -33,10 +33,34 @@ a:hover{
 p,ul,h1,h2,h3{
   margin-bottom: 0;
 }
+textarea{
+  resize: none;
+}
+/* Works on Firefox */
+* {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: rgba(0,0,0,0.1) rgba(255,255,255,0.2); 
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.2);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 20px;
+  border: 2px solid rgba(255,255,255,0.2);
+}
 /* Wrapper */
 .wrapper{
   min-width: 36rem;
   overflow: hidden;
+  position: relative;
 }
 /* Header */
 header{
@@ -81,18 +105,24 @@ header{
     display: flex; gap: 2rem; height: 100%; align-items: center;
   }
   .account-login-profil{
-    width: 5rem;
-    height: 5rem;
+    width: 6rem;
+    height: 6rem;
     overflow: hidden;
     padding: 2rem 0;
     border-radius: 50%;
-    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem;
     border: 0.1rem solid $bordercontainer;
     background: $couleurfondbody;
 
     & img{
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 50%;
     }
   }
   & .fa-chevron-down{
@@ -105,8 +135,8 @@ header{
   }
 }
 /* Navigation */
-nav{
-  height: 7rem;
+.navigation{
+  height: 6rem;
   background-color: $couleursecondaire;
   color: $couleurwhite;
   border-bottom:0.4rem solid $couleurbleuciel;
@@ -180,7 +210,6 @@ nav{
   font-weight: bold;
   font-size: 1.4rem;
   color: $couleurprimaire;
-  padding: 0 1rem;
   height: 100%;
 }
 .dashboardIcon, .menu-list-item{
@@ -192,7 +221,7 @@ nav{
   width: 6.8rem;
 }
 .dashboardIcon a:first-child {
-  font-size: 2.4rem;
+  font-size: 2rem;
 }
 .dashboardIcon a:nth-child(2){
   display: none;
@@ -223,7 +252,7 @@ nav{
   &.active{
     z-index: 1;
     opacity: 1;
-    top: 7rem;
+    top: 6rem;
   }
 
   & li{
@@ -244,7 +273,7 @@ nav{
 }
 .menu-list-item span:nth-of-type(2){
   font-size: 1.2rem;
-  opacity: 0.4;
+  opacity: 0.6;
 }
 .menu span + a{
   display: none;
@@ -254,8 +283,17 @@ nav{
 }
 
 /* Breadcrumb */
-.breadcrumb{
-  padding: 3rem 1rem;
+.bread{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+
+  & p{
+    color: $couleursecondaire;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
 }
 /* Jumbotron */
 .wrapper .hero-unit{
@@ -282,8 +320,8 @@ nav{
 }
 /* Main */
 main{
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   margin-bottom: 3rem;
 }
 /* Resume */
@@ -337,9 +375,6 @@ main{
       border-color:rgba($color: #000000, $alpha: 0.1);
     }
 
-    & img{
-      filter: grayscale(100%);
-    }
   }
   .account-login-username{
     & strong{
@@ -410,11 +445,15 @@ footer{
     margin: 3rem 0;
     color: $couleursecondaire;
   }
-  form{
+  & form.form-add{
     padding: 3rem;
     border: 0.1rem solid $bordercontainer;
     border-radius: 0.5rem;
     background: $couleurwhite;
+
+    & ::placeholder{
+      font-size: 1.2rem;
+    }
   }
   .form-group{
     margin-top: 2rem;
@@ -445,12 +484,373 @@ footer{
     color: $couleursecondaire;
     padding: 1.5rem 3rem;
     transition: background 0.3s ease-in-out;
+    border: 0.1rem solid $bordercontainer;
   }
   button:hover{
     background: $couleursecondaire;
-    border: 0.1rem solid $bordercontainer;
+    color: $couleurwhite;
   }
 }
+
+.list-view{
+  margin: 3rem 0;
+  padding: 3rem 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid $bordercontainer;
+  background: $couleurwhite;
+  td, th{
+    padding: 1rem;
+  }
+
+  & .nav {
+    width: 100%;
+    margin-top: 6rem;
+    border: 0.1rem solid rgba($color: #000000, $alpha: 0.05);
+    box-shadow: 0 0 1.2rem rgba($color: #000000, $alpha: 0.01);
+
+    & a{
+      color: $couleursecondaire;
+    }
+  }
+
+  & .table-responsive{
+    margin-top: 5rem;
+    border: 0.1rem solid rgba($color: #000000, $alpha: 0.05);
+    box-shadow: 0 0 1.2rem rgba($color: #000000, $alpha: 0.01);
+  }
+  .app-btn-secondary{font-weight: normal; border: 0.1rem solid $bordercontainer; padding: 1rem; transition: color 0.3s ease-in-out;}
+
+  .app-btn-secondary:hover{ color: $couleurprimaire;}
+
+  & input, select, button{
+    padding: 1rem;
+    border: 0.1rem solid $bordercontainer;
+  }
+  & .col-auto button{
+    background: $couleursecondaire;
+    color: $couleurwhite;
+    font-size: 1.2rem;
+  }
+  .link-details{
+    font-size: 1.2rem;
+    color: $couleurprimaire;
+
+  }
+  .app-nav-tabs{background:#fff;padding:0}
+  .app-nav-tabs .nav-link{color:$couleursecondaire;font-weight:bold}
+  .app-nav-tabs .nav-link.active{color:$couleurprimaire;border-bottom:2px solid $couleurprimaire;}
+  .app-nav-tabs .nav-link.active:hover{background:none}
+  .app-nav-tabs .nav-link:hover{color:$couleurprimaire;}
+  .active > .page-link, .page-link.active{
+    background: $couleursecondaire;
+    border-color:$couleursecondaire;
+
+  }
+  .page-item .page-link{
+    color: $couleursecondaire;
+  }
+  .page-item.active .page-link{
+    color: $couleurwhite;
+    font-weight: bold;
+  }
+  .separator{
+    font-size: 1.4rem;
+    opacity: 0.5;
+  }
+
+}
+
+/* CPANEL Dashboard */
+.cpanel-wrapper{
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  & footer{
+    margin-top: auto;
+    height: 5rem;
+  }
+}
+.cpanel{
+  height: 100%;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+
+  & form{
+    width: 34rem;
+    padding: 3rem 1.5rem;
+    border: 0.1rem solid $bordercontainer;
+    border-radius: 0.5rem;
+    background: $couleurwhite;
+  }
+  & .form-group{
+    margin-bottom: 1rem;
+  }
+  & label {
+    display: block;
+ 
+  }
+  & input, button{
+    width: 100%;
+    padding: 1.5rem 1rem;
+    margin-top: 1rem;
+  }
+  & button {
+    background: transparent;
+    color: $couleursecondaire;
+    font-size: 1.6rem;
+    font-weight: bold;
+    border: 0.1rem solid $bordercontainer;
+    transition: background 0.3s ease-in-out;
+
+    &:hover{
+      background: $couleursecondaire;
+      color: $couleurwhite;
+    }
+  }
+  & .cpanel-title{
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: $couleurprimaire;
+  }
+  & .alert-danger{
+    font-size: 1.2rem;
+  }
+}
+.list-antecedent{
+  padding: 6rem 3rem;
+  margin-top: 3rem;
+  border: 0.1rem solid $bordercontainer;
+  border-radius: 0.5rem;
+  background-color: $couleurwhite;
+
+  & h2{
+    margin-bottom: 3rem;
+  }
+}
+.cpanel-wrapper .header{
+  justify-content: flex-start;
+  gap: 1.5rem;
+
+}
+.trimageprofil td{
+  height: 8rem;
+  line-height: 8rem;
+}
+.tdimageprofil .imgprofil{
+  width: 8rem;
+  height: 8rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($color: #000000, $alpha: 0.01);
+  border: 0.1rem solid $bordercontainer;
+  border-radius: 0.5rem;
+  overflow: hidden;
+
+  & img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+/* Aide */
+.app-wrapper {
+  .app-page-title{
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: $couleursecondaire;
+    margin-bottom: 3rem;
+  }
+  
+    & .app-card{
+      border: 0.1rem solid rgba($color: #000000, $alpha: 0.05);
+      padding: 1rem 0;
+    }
+    & .app-card-header{
+      margin-bottom: 1rem;
+
+      & h4{
+        font-size: 1.6rem;
+      }
+    }
+    .accordion-button{
+      background: rgba($color: #000000, $alpha: 0.01);
+      border: 0.1rem solid rgba($color: #000000, $alpha: 0.05);
+      font-size: 1.2rem;
+      color: inherit;
+
+      &:active{
+        color: $couleurprimaire;
+      }
+    }
+}
+/** Affichage */
+main.list-view-details .list-view{
+  padding: 1rem 0.25rem;
+}
+.detailsprofilapp{
+  .detailsprofiltop{
+    display: flex;
+    gap: 2rem;
+  }
+  .detailsprofiltop-img{
+    width: 20rem;
+    height: 100%;
+    border: 0.1rem solid $bordercontainer;
+    border-radius: 0.5rem;
+    overflow: hidden;
+& .imgpatient{
+  opacity: 0.3;
+  height: 100%;
+}
+    & img{
+      width: 100%;
+      height: 16rem;
+      object-fit: cover;  
+      object-position: top center;
+    }
+  }
+  .detailsprofiltop-info{
+    h2{
+      padding: 1rem 0;
+      color: $couleursecondaire;
+      font-size: 2rem;
+    }
+    strong{
+      font-weight: normal;
+    }
+  }
+  .detailsprofiltop-moreinfo{
+    padding: 1rem;
+    margin-left: auto;
+
+    & p{
+      margin-bottom: 1rem;
+    }
+
+    & .nam{
+      color: $couleurtertiairelight;
+    }
+    & .numdossier{
+      padding: 0.5rem;
+      border: 0.1rem solid $bordercontainer;
+      border-radius: 0.5rem;
+      background: $couleurfondbody;
+      color: $couleursecondaire;
+      font-weight: bold;
+    }
+  }
+  .detailsprofiltop-info-details{
+    display: flex;
+    padding: 0.1rem;
+    gap: 1.25rem;
+    align-items: center;
+}
+& .fa-solid{
+  opacity: 0.4;
+}
+/** Bottom */
+ .detailsprofilbottom{
+  margin-top: 3rem;
+  border-top:0.3rem solid $couleurbleuciel;
+  width: 100%;
+ }
+ .detailsprofilbottomMore{
+  margin-top: 3rem;
+
+  & h3{
+    font-weight: bold;
+  }
+ }
+.detailsprofilbottomMoredetails{
+  margin-top: 3rem;
+}
+.detailsprofilbottomspecialite{
+  padding: 1rem;
+  background: $couleurfondbody;
+  box-shadow: 0 0 0.6rem rgba(0,0,0,0.08);
+  border: 0.1rem solid rgba(0,0,0,0.1);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+ 
+  & strong{
+    color: $couleursecondaire;
+    font-size: 1.6rem;
+    color: $couleursecondaire;
+    font-weight: normal;
+  }
+}
+.detailsprofilbottomspecialitetitle{
+  margin-left: 1rem;
+  font-weight: normal;
+  opacity: 0.8;
+}
+}
+
+.editmedecin{
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+
+}
+
+.editmedecin.active{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  opacity: 1;
+  height: 100%;
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out; 
+  background: rgba(0,0,0,0.95);
+  padding: 2rem;
+}
+.list-view .active > .page-link, .list-view .page-link.active{
+  background: transparent;
+  font-weight: bold;
+  background: $bordercontainer;
+}
+.list-view .active > .page-link, .list-view .page-link.active{
+  border:0.1rem solid $bordercontainer;
+}
+.list-view .page-item.active .page-link{
+  color: $couleursecondaire;
+  position: static;
+}
+
+/* detailsprofilbottomMoreAntecedentsMedicaux */
+.detailsprofilbottomMoreAntecedentsMedicaux{
+  margin-top: 3rem;
+
+  & p{
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: $couleurfondbody;
+    box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.08);
+    border: 0.1rem solid $bordercontainer;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;  
+  }
+  & strong{
+    font-weight: normal;
+  }
+ }
 /* Responsive Web Design [Ecran de largeur minimale 576px]*/
 @media screen and (min-width:#{$smallDevice * 1px}) {
   .header{
@@ -464,16 +864,13 @@ footer{
   .resume-group-bloc{
     width: calc(50% - 1rem);
   }
-  .nav .dashboardIcon.active,.nav .menu-list-item.active{
-    font-size: 1.6rem;
+  .list-view{
+    padding: 6rem 3rem;
   }
   .header .account-login-profil{
     display: block;
   }
-  .nav{
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+
   .wrapper .hero-unit{
     p{
       max-width: 50rem;
@@ -484,9 +881,6 @@ footer{
 
   }
   /* Breadcrumb */
-.breadcrumb{
-  padding: 3rem 2rem;
-}
 .dashboardIcon a + a{
   display: inline;
 }
@@ -527,7 +921,7 @@ footer{
       justify-content: center;
     }
     .form-insert legend{
-      font-size: 2.8rem;
+      font-size: 2.4rem;
     }
     .menu-list-item .menu-login-bloc-design{
       right: 11.75rem;
@@ -546,7 +940,7 @@ footer{
   h1,h2,h3{
     font-size: 1.8rem;
   }
-  .header, .nav, .breadcrumb,.main,.resume-group,.mainlist-center,.footer{
+  .header, .bread, .nav,.main,.resume-group,.mainlist-center,.footer{
     width: 99.2rem;
     // padding-left: 2rem;
     // padding-right: 2rem;
@@ -554,7 +948,7 @@ footer{
     margin-right: auto;
   }
   .nav .menu {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
   .nav .menu-login.active{
     right: -1rem;
@@ -573,4 +967,6 @@ footer{
   .dashboardIcon a:nth-child(2){
     display: inline;
   }
+  
+
 }

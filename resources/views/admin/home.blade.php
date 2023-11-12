@@ -3,14 +3,20 @@
 @include('includes.header-backend')
 <main>
   <div class="main">
-      <div class="breadcrumb">
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, doloribus!</p>
-        <span>22 Octobre 2023</span>
-      </div>
+
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb" class="bread">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">Dashboard</li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{ route("app.home") }}">Accueil</a></li>
+          </ol>
+          <p>Aujourd'hui : {{ \Carbon\Carbon::now()->format('d/m/Y') }}</p>
+
+        </nav>
+
   <!-- Jumbotron -->
 <div class="hero-unit">
-  <h1>Application de gestion de clinique</h1>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, temporibus!</p>
+  <h1>Application gestion de clinique</h1>
+  <p>Prise en charge du dossier de patient, planification de la disponibilit&eacute des m&eacute;decins et gestion des rendez-vous des patients. </p>
   <span class="fa-solid fa-hospital"></span>
 </div>
 <!-- Fin Jumbotron -->
@@ -21,9 +27,9 @@
     <div class="resume-group">
       <!-- Bloc 1 -->
       <div class="resume-group-bloc">
-        <span class="fa-solid fa-stethoscope"></span>
-        <b>Medecins</b>
-        <span>3,973</span>
+        <span class="fa-solid fa-hospital-user"></span>
+        <b>Patients</b>
+        <span>{{ $allpatients }}</span>
       </div>
       <!-- Fin bloc 1 -->
 
@@ -31,25 +37,25 @@
        <div class="resume-group-bloc">
         <span class="fa-solid fa-stethoscope"></span>
         <b>Medecins</b>
-        <span>3,973</span>
+        <span>{{ $allmedecins }}</span>
       </div>
       <!-- Fin bloc 2 -->
 
 
        <!-- Bloc 3 -->
        <div class="resume-group-bloc">
-        <span class="fa-solid fa-stethoscope"></span>
-        <b>Medecins</b>
-        <span>3,973</span>
+        <span class="fa-regular fa-calendar-check"></span>
+        <b>Rendez-vous</b>
+        <span>0</span>
       </div>
       <!-- Fin bloc 3 -->
 
 
        <!-- Bloc 4 -->
        <div class="resume-group-bloc">
-        <span class="fa-solid fa-stethoscope"></span>
-        <b>Medecins</b>
-        <span>3,973</span>
+        <span class="fa-solid fa-eye"></span>
+        <b>Consultations</b>
+        <span>0</span>
       </div>
       <!-- Fin bloc 4 -->
     </div>
@@ -63,77 +69,27 @@
         <span class="mainlist-center-title">Medecins disponibles</span>  
 
         <!-- Medecin 1 -->
+        @forelse($listmedecins as $medecin) 
         <div class="account-login listMedecin">
           <!-- Photo login connected -->
           <p class="account-login-profil">
-            <img src="{{url('assets/images/avatar.png')}}" alt="profil de l'utilisateur">
+            <img src="{{ Storage::url($medecin->photo) }}" alt="profil du medecin {{ $medecin->nomMedecin }}">
           </p>
           <!-- Fin Photo Login Connected -->
           <!-- Nom user connected -->
           <div class="account-login-username">
-            <strong>Dr. Cadet</strong>
+            <strong>Dr. {{ $medecin->nomMedecin}}</strong>
             <p>
-              <span>Ophtalmologue</span>
+              <span>{{ $medecin->specialite }}</span>
             </p>
           </div>
           <!-- Fin Nom user connected -->
         </div>  
         <!-- Fin Medecin 1 -->  
-        
-         <!-- Medecin 1 -->
-         <div class="account-login listMedecin">
-          <!-- Photo login connected -->
-          <p class="account-login-profil">
-            <img src="{{url('assets/images/avatar.png')}}" alt="profil de l'utilisateur">
-          </p>
-          <!-- Fin Photo Login Connected -->
-          <!-- Nom user connected -->
-          <div class="account-login-username">
-            <strong>Dr. Cadet</strong>
-            <p>
-              <span>Ophtalmologue</span>
-            </p>
-          </div>
-          <!-- Fin Nom user connected -->
-        </div>  
-        <!-- Fin Medecin 1 -->  
+       @empty 
+       <p>Aucun m&eacute;decin disponible</p>
 
-         <!-- Medecin 1 -->
-         <div class="account-login listMedecin">
-          <!-- Photo login connected -->
-          <p class="account-login-profil">
-            <img src="{{url('assets/images/avatar.png')}}" alt="profil de l'utilisateur">
-          </p>
-          <!-- Fin Photo Login Connected -->
-          <!-- Nom user connected -->
-          <div class="account-login-username">
-            <strong>Dr. Cadet</strong>
-            <p>
-              <span>Ophtalmologue</span>
-            </p>
-          </div>
-          <!-- Fin Nom user connected -->
-        </div>  
-        <!-- Fin Medecin 1 -->  
-
-         <!-- Medecin 1 -->
-         <div class="account-login listMedecin">
-          <!-- Photo login connected -->
-          <p class="account-login-profil">
-            <img src="{{url('assets/images/avatar.png')}}" alt="profil de l'utilisateur">
-          </p>
-          <!-- Fin Photo Login Connected -->
-          <!-- Nom user connected -->
-          <div class="account-login-username">
-            <strong>Dr. Cadet</strong>
-            <p>
-              <span>Ophtalmologue</span>
-            </p>
-          </div>
-          <!-- Fin Nom user connected -->
-        </div>  
-        <!-- Fin Medecin 1 -->  
-        
+        @endforelse
       </div>
       <!-- Fin MainList-center-left -->
       <!-- Mainlist-center-left -->

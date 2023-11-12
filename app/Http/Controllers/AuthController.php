@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\AuthRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class AuthController extends Controller
+{
+    public function login(){
+        return view("auth.cpanel");
+    }
+
+    public function handlelogin(AuthRequest $request){
+        $credentials = $request->only("email","password");
+        if(Auth::attempt($credentials)){
+            return redirect()->route("app.home");
+        }
+        else{
+            return redirect()->back()->with("error","Utilisateur ou mot de passe incorrect");
+        }
+    }
+}

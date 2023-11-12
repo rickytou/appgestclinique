@@ -89,7 +89,7 @@
           <p class="equipe__img">
             <img src="assets/images/jean-claude-cadet.jpg" alt="Jean Claude Cadet">
           </p>
-          <strong><a href="/medecin/jeanclaudecadet">Jean Claude Cadet</a></strong>
+          <strong><a href="{{ route("medecin.view","jeanclaudecadet") }}">Jean Claude Cadet</a></strong>
           <span>Ophtalmologue</span>
           <div class="equipe__socialmedia">
             <p>
@@ -106,7 +106,7 @@
           <p class="equipe__img">
             <img src="assets/images/claudy-cadet.jpg" alt="Claudy Cadet">
           </p>
-          <strong><a href="/medecin/emmanuelcadet">E.M. Claude Cadet</a></strong>
+          <strong><a href="{{ route("medecin.view","emmanuelcadet")}}">E.M. Claude Cadet</a></strong>
           <span>Ophtalmologue</span>
           <div class="equipe__socialmedia">
             <p>
@@ -123,7 +123,7 @@
           <p class="equipe__img">
             <img src="assets/images/valerie-cadet.jpg" alt="Jean Claude Cadet">
           </p>
-          <strong><a href="/medecin/valeriecadet"> Val&eacute;rie Cadet</a></strong>
+          <strong><a href="{{ route("medecin.view","valeriecadet")}}"> Val&eacute;rie Cadet</a></strong>
           <span>Ophtalmologue</span>
           <div class="equipe__socialmedia">
             <p>
@@ -140,7 +140,7 @@
           <p class="equipe__img">
             <img src="assets/images/stephane.jpg" alt="Stephane Cadet">
           </p>
-          <strong><a href="/medecin/stephanecadet"> St&eacute;phane Cadet</a></strong>
+          <strong><a href="{{ route("medecin.view","stephanecadet")}}"> St&eacute;phane Cadet</a></strong>
           <span>Ophtalmologue</span>
           <div class="equipe__socialmedia">
             <p>
