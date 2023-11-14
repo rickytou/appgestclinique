@@ -6,18 +6,9 @@
 @include('includes.header-backend')
 <!-- Fin Navigation -->
 <main>
-  <div class="main form-insert">
+  <div class="container-xl main form-insert">
       <form method="post" class="form-add" action="{{ route("antecedentmedical.save") }}">
         @csrf
-        @if ($errors->any())
-      <div class="alert alert-danger">
-          <ul>
-              @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-              @endforeach
-          </ul>
-      </div>
-  @endif
         <legend>Nouvel ant&eacute;c&eacute;dent m&eacute;dical</legend>
         @if(session('success'))
           <div class="alert alert-success">
@@ -29,6 +20,9 @@
           <label class="col-md-4 control-label" for="nomAntecedentMedical">Ant&eacute;c&eacute;dent m&eacute;dical <span class="text-danger">*</span></label>
           <div class="col-md-6">   
             <input type="text" class="form-control" placeholder="ant&eacute;c&eacute;dent m&eacute;dical" id="nomAntecedentMedical" name="nomAntecedentMedical">
+            @error('nomAntecedentMedical')
+              <span class="text-danger fs-5">{{ $message }}</span>
+            @enderror
           </div>
         </div>
         <div class="form-group">
@@ -38,55 +32,19 @@
          <!-- Button -->
       <div class="form-group">
         <div class="col-md-4">
-        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <button type="submit">Enregistrer</button>
         </div>
       </div>  
       </form>
 
-
-
-
 @isset($allAntecedents)
   @if($allAntecedents->count() > 0)   
- <div class="container-xl main list-view">
+ <div class="container-xl list-view">
 			    
   <div class="row g-3 mb-4 align-items-center justify-content-between">
     <div class="col-auto">
           <h2 class="app-page-title"><span class="fa-solid fa-list"></span> Liste ant&eacute;c&eacute;dent</h2>
     </div>
-    <div class="col-auto">
-       <div class="page-utilities">
-        <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
-          <div class="col-auto">
-            <form class="table-search-form row gx-1 align-items-center">
-                      <div class="col-auto">
-                          <input type="text" id="search-orders" name="searchantecedent" class="form-control search-orders" placeholder="Rechercher par nom antecedent">
-                      </div>
-                      <div class="col-auto">
-                          <button type="submit" class="btn app-btn-secondary">Rechercher</button>
-                      </div>
-                  </form>
-                  
-          </div><!--//col-->
-          <div class="col-auto">
-            
-            <select class="form-select w-auto" >
-              <option selected value="option-1">All</option>
-              <option value="option-2">This week</option>
-              <option value="option-3">This month</option>
-              <option value="option-4">Last 3 months</option>
-              
-          </select>
-          </div>
-          <div class="col-auto">						    
-            <a class="btn app-btn-secondary" href=" {{ route("patient.show") }}">
-              <span class="fa-regular fa-file"></span>
-              Ajouter ant&eacute;c&eacute;dent
-          </a>
-          </div>
-        </div><!--//row-->
-      </div><!--//table-utilities-->
-    </div><!--//col-auto-->
   </div><!--//row-->
  
   
@@ -130,19 +88,7 @@
            
         </div><!--//app-card-body-->		
     </div><!--//app-card-->
-    <nav class="app-pagination">
-      <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Pr&eacute;c&eacute;dent</a>
-          </li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Suivant</a>
-        </li>
-      </ul>
-    </nav><!--//app-pagination-->    
+    
   </div><!--//tab-pane-->
 </div><!--//tab-content--> 
 </div><!--//container-fluid-->
@@ -152,8 +98,7 @@
 
 
 
-
-
+  </div>
 </main>
 <!-- Fin Main --> 
 @endSection

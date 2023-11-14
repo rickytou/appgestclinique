@@ -37,12 +37,13 @@
           <div class="account-login">
             <!-- Photo login connected -->
             <p class="account-login-profil">
-              <img src="{{url('assets/images/avatar.png')}}" alt="profil de l'utilisateur">
+              {{-- <img src="{{url('assets/images/avatar.png')}}" alt="profil de l'utilisateur"> --}}
+              <span class="fa-regular fa-user"></span>
             </p>
             <!-- Fin Photo Login Connected -->
             <!-- Nom user connected -->
             <div class="account-login-username">
-              <strong>Dr. Cadet</strong>
+              <strong>{{ Auth::user()->name }}</strong>
               <p>
                 <span>connect&eacute;</span>
                 <span class="fa-solid fa-chevron-down"></span>

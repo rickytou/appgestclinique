@@ -17,7 +17,7 @@
   </nav>
   <div class="main form-insert">
 
-    <form class="form-horizontal form-add" method="post" action="{{ route("patient.update") }}">
+    <form class="form-horizontal form-add" method="post" action="{{ route("patient.save") }}">
       @csrf
       {{-- @if ($errors->any())
       <div class="alert alert-danger">
@@ -77,7 +77,7 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for="adressePatient">Adresse <span class="text-danger">*</span></label>
         <div class="col-md-6">                     
-          <textarea class="form-control" id="adressePatient" name="adressePatient" >{{ old("adressepatient") }}</textarea>
+          <textarea class="form-control" id="adressePatient" name="adressePatient" >{{ old("adressePatient") }}</textarea>
           @error('adressePatient')
           <span class="text-danger fs-5">{{ $message }}</span>
           @enderror

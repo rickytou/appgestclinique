@@ -23,7 +23,19 @@ $(function(){
        $(this).addClass('active');
        $(this).next().addClass('active');
    }
-
   });
  
+/** Filtre pour les patients */
+$('#formfiltre').on("change", function(){
+
+  $('#formfiltre').submit();
+});
+/** Filtre pour les patients */
+$('#formfiltremedecin').on("change", function(){
+  $('#formfiltremedecin').submit();
+});
+
+
+
+
 });

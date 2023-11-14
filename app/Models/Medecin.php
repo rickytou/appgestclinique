@@ -16,7 +16,8 @@ class Medecin extends Model
  
         protected $fillable = [
             'nomMedecin', 'prenomMedecin', 'courrielMedecin', 'adresseMedecin', 'numeroLicence',
-            'telephoneMedecin', 'affiliationsProfessionnelles', 'titresAcademiques', 'statutMedecin',
+            'telephoneMedecin', 'photo',
+            'affiliationsProfessionnelles', 'titresAcademiques', 'statutMedecin',
             // Ajoutez d'autres champs au besoin
         ];
     }

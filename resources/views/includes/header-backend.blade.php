@@ -33,7 +33,7 @@
           </li>
           <li>
             <span class="fa-solid fa-circle-plus"></span>
-            <a href="#">Ant&eacute;c&eacute;dent m&eacute;dical</a>
+            <a href="{{ route('patient.patientantecedent') }}">Patient Ant&eacute;c&eacute;dent</a>
           </li>
           <li>
             <span class="fa-regular fa-file"></span>
@@ -99,6 +99,10 @@
         <a href="#">Parametres</a>
         <span class="fa-solid fa-chevron-down arrow-down"></span>
         <ul class="menu-list-item-sub-menu">
+          <li>
+            <span class="fa-regular fa-circle-question"></span>
+            <a href="#">Utilisateurs</a>
+          </li>
           <li>
             <span class="fa-regular fa-circle-question"></span>
             <a href="{{ route('app.aide') }}">Aide</a>

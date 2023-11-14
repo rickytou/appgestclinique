@@ -7,6 +7,7 @@ use App\Http\Requests\MedecinRequest;
 use App\Http\Requests\UpdateMedecinRequest;
 use App\Models\Medecin;
 use Exception;
+use Illuminate\Http\Request;
 
 class MedecinController extends Controller
 {
@@ -35,6 +36,7 @@ class MedecinController extends Controller
 
     /** Methode pour enregistrer un medecin */
     public function savemedecin(MedecinRequest $request){
+        
         $validatedData = $request;
         if($validatedData){
             $ext = $request->photo->extension();
@@ -62,9 +64,9 @@ class MedecinController extends Controller
 
     /** Fonction pour lister les medecins */
     public function listMedecin(){
-        $medecins = Medecin::paginate(4);
+        $medecins = Medecin::paginate(10);
         $medecinsInactifs = Medecin::where("statutMedecin", "inactif")->get();
-        return view('medecins.listmedecin',["allmedecins" => $medecins, "allmedecinsInactifs" => $medecinsInactifs]);
+        return view('medecins.listmedecin',["allmedecins" => $medecins, "allmedecinsInactifs" => $medecinsInactifs, "filtre" => null]);
     }
     /** Affichage du profil du medecin */
     public function detailsmedecin(int $id){
@@ -117,5 +119,42 @@ public function editmedecin(Medecin $medecin){
        }
     }
     
-    
+    /** Search */
+    public function searchmedecinbynumber(Request $request){
+        if(!empty($request->numeroLicence)){
+            $medecin = Medecin::where("numeroLicence", $request->numeroLicence)->paginate(1);
+           if($medecin != null){
+            return view('medecins.listmedecin',["allmedecins" => $medecin, "allmedecinsInactifs" => [], "filtre" => null]);
+           }
+        }
+        else{
+            $medecins = Medecin::paginate(10);
+            $medecinsInactifs = Medecin::where("statutMedecin", "inactif")->get();
+            return view('medecins.listmedecin',["allmedecins" => $medecins, "allmedecinsInactifs" => $medecinsInactifs, "filtre" => null]);
+        }
+    }
+
+    /** Filtre Medecin */
+    public function filtremedecin(Request $request){
+        $filtre = $request->filtremedecin;
+        $medecinsInactifs = Medecin::where("statutMedecin", "inactif")->get();
+        if(strtolower($filtre) == "desc"){
+            $medecins = Medecin::orderBy("nomMedecin", 'desc')->paginate(10);           
+        }
+        elseif(strtolower($filtre) == "asc"){
+            $medecins = Medecin::orderBy("nomMedecin", 'asc')->paginate(10); 
+        }
+        elseif(strtolower($filtre) == "daterecent"){
+            $medecins = Medecin::orderBy("created_at", 'desc')->paginate(10); 
+        }
+        else{
+            $medecins = Medecin::paginate(10);
+            $filtre = null;
+        }
+        return view('medecins.listmedecin',["allmedecins" => $medecins, "allmedecinsInactifs" => $medecinsInactifs, "filtre" => $filtre]);              
+    }
+
+
+
+
 }

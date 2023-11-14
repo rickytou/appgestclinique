@@ -23,8 +23,8 @@ class UpdatePatientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nompatient' => 'required|min:2|max:50',
-            'prenompatient' => 'required|min:2|max:50',
+            'nomPatient' => 'required|min:2|max:50',
+            'prenomPatient' => 'required|min:2|max:50',
             'courrielPatient' => 'min:3|max:30|email',
             'sexePatient' => 'required',
             'adressePatient' => 'required',
@@ -40,12 +40,12 @@ class UpdatePatientRequest extends FormRequest
     }
     public function messages(){
         return [
-            "nompatient.required" => "Le nom du patient est requis.",
-            "nompatient.min" => "Le nom du patient doit contenir au moins :min caractères.",
-            "nompatient.max" => "Le nom du patient ne peut pas dépasser :max caractères.",
-            "prenompatient.required" => "Le prénom du patient est requis.",
-            "prenompatient.min" => "Le prénom du patient doit contenir au moins :min caractères.",
-            "prenompatient.max" => "Le prénom du patient ne peut pas dépasser :max caractères.",
+            "nomPatient.required" => "Le nom du patient est requis.",
+            "nomPatient.min" => "Le nom du patient doit contenir au moins :min caractères.",
+            "nomPatient.max" => "Le nom du patient ne peut pas dépasser :max caractères.",
+            "prenomPatient.required" => "Le prénom du patient est requis.",
+            "prenomPatient.min" => "Le prénom du patient doit contenir au moins :min caractères.",
+            "prenomPatient.max" => "Le prénom du patient ne peut pas dépasser :max caractères.",
             "courrielPatient.email" => "Le format de l'adresse email du patient est incorrect.",
             "courrielPatient.min" => "L'adresse email du patient doit avoir plus de 3 caractères.",
             "courrielPatient.max" => "L'adresse email ne peut pas dépasser :max caractères.",

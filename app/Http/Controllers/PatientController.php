@@ -54,9 +54,9 @@ class PatientController extends Controller
      * Fonction permettant de lister tous les patients
      */
     public function listPatient(){
-        $patients = Patient::paginate(4);
+        $patients = Patient::paginate(10);
         $patientsInactifs = Patient::where("statutPatient", "inactif")->get();
-        return view('patient.listpatient',["allpatients" => $patients, "allpatientsInactifs" => $patientsInactifs]);
+        return view('patient.listpatient',["allpatients" => $patients, "allpatientsInactifs" => $patientsInactifs, "filtre" => null]);
     }
 
     /** Details de patient */
@@ -70,17 +70,72 @@ class PatientController extends Controller
         return view("patient.editpatient", compact("patient"));
     }
 
-    /** Update */
-    public function updatepatient(Patient $patient, UpdatePatientRequest $request){
-        
-        try{
-            $patient->update($request->all());
-            return redirect()->back()->with('success', 'Mises a jour effectuees avec succes');
+    
+    public function updatepatient(Patient $patient, UpdatePatientRequest $request) {
+        $newEmailExists = Patient::where('courrielPatient', 'LIKE', strtolower($request->courrielPatient))
+            ->where('idPatient', '!=', $patient->idPatient)
+            ->exists();
+    
+        $newNAMExists = Patient::where('NumeroAssMalPatient', 'LIKE', strtolower($request->NumeroAssMalPatient))
+            ->where('idPatient', '!=', $patient->idPatient)
+            ->exists();
+    
+        if ($newEmailExists) {
+            return redirect()->back()->with('error', 'Le courriel existe dans notre système');
         }
-        catch(Exception $e){
+    
+        if ($newNAMExists) {
+            return redirect()->back()->with('error', 'Le numéro d\'assurance maladie du patient existe dans notre système');
+        }
+    
+        try {
+            $patient->update($request->all());
+            return redirect()->back()->with('success', 'Mises à jour effectuées avec succès');
+        } catch (Exception $e) {
             dd($e);
         }
     }
+    
+       /** Search */
+    public function searchpatient(Request $request){
+        if(!empty($request->numeroDossier)){
+        $patients = Patient::where("numeroDossier", $request->nodossier)->paginate(1);
+       if($patients != null){
+        return view('patient.listpatient',["allpatients" => $patients, "allpatientsInactifs" => [], "filtre" => null]);
+       }
+    }
+    else{
+        $patients = Patient::paginate(10);
+        $patientsInactifs = Patient::where("statutPatient", "inactif")->get();
+        return view('patient.listpatient',["allpatients" => $patients, "allpatientsInactifs" => $patientsInactifs, "filtre" => null]);
+    }
+ }
+    /** Filtre Liste patient */
+    public function filtrepatient(Request $request){
+        $filtre = $request->filtre;
+        $patientsInactifs = Patient::where("statutPatient", "inactif")->get();
+        if(strtolower($filtre) == "desc"){
+            $patients = Patient::orderBy("nomPatient", 'desc')->paginate(10);           
+        }
+        elseif(strtolower($filtre) == "asc"){
+            $patients = Patient::orderBy("nomPatient", 'asc')->paginate(10); 
+        }
+        elseif(strtolower($filtre) == "daterecent"){
+            $patients = Patient::orderBy("created_at", 'desc')->paginate(10); 
+        }
+        else{
+            $patients = Patient::paginate(10);
+            $filtre = null;
+        }
+        return view('patient.listpatient',["allpatients" => $patients, "allpatientsInactifs" => $patientsInactifs, "filtre" => $filtre]);              
+    }
+    // public function searchmedecinbynumber(Request $request){
+    //     dd($request);
+    // }
 
+    /** Patient Antecedent */
+    public function patientantecedent(){
+        return view("patient.patientantecedentmedical");
+    }
 }
 

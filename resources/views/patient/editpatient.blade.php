@@ -36,13 +36,18 @@
             {{ session('success') }}
         </div>
         @endif
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @endif
        
       <!-- Text input-->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="nompatient">Nom <span class="text-danger">*</span></label>  
+        <label class="col-md-4 control-label" for="nomPatient">Nom <span class="text-danger">*</span></label>  
         <div class="col-md-6">
-        <input id="nompatient" name="nompatient" type="text" placeholder="nom du patient" class="form-control input-md" value="{{ $patient->nomPatient }}">
-        @error('nompatient')
+        <input id="nomPatient" name="nomPatient" type="text" placeholder="nom du patient" class="form-control input-md" value="{{ $patient->nomPatient }}">
+        @error('nomPatient')
         <span class="text-danger fs-5">{{ $message }}</span>
         @enderror 
         </div>
@@ -50,10 +55,10 @@
       
       <!-- Text input-->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="prenompatient">Pr&eacute;nom <span class="text-danger">*</span></label>  
+        <label class="col-md-4 control-label" for="prenomPatient">Pr&eacute;nom <span class="text-danger">*</span></label>  
         <div class="col-md-6">
-        <input id="prenompatient" name="prenompatient" type="text" placeholder="pr&eacute;nom du patient" class="form-control input-md" value="{{ $patient->prenomPatient }}">
-        @error('prenompatient')
+        <input id="prenomPatient" name="prenomPatient" type="text" placeholder="pr&eacute;nom du patient" class="form-control input-md" value="{{ $patient->prenomPatient }}">
+        @error('prenomPatient')
         <span class="text-danger fs-5">{{ $message }}</span>
         @enderror
         </div>

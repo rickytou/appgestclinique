@@ -17,4 +17,10 @@ class Patient extends Model
     protected $guarded = [
         "statutPatient","groupSanguin","numeroDossier"
     ];
+
+    public function antecedentmedical(){
+        return $this->belongsToMany(AntecedentMedical::class, 'PatientsAntecedentsMedicaux', 'identifiantPatient', 'idAntecedentsMedicaux')
+        ->withPivot('dateDiagnostics', 'description')
+        ->withTimestamps();
+    }
 }

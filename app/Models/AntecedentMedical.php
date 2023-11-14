@@ -12,4 +12,11 @@ class AntecedentMedical extends Model
 {
     //use HasFactory;
     protected $table = 'antecedent_medicals';
+
+    public function patients()
+    {
+        return $this->belongsToMany(Patient::class, 'PatientsAntecedentsMedicaux', 'idAntecedentsMedicaux', 'identifiantPatient')
+            ->withPivot('dateDiagnostics', 'description')
+            ->withTimestamps();
+    }
 }

@@ -44,6 +44,7 @@ Route::middleware("auth")->group(function(){
 
 /* Route Patient */
     Route::prefix('patient')->group(function(){
+        Route::get('/patientantecedent',[PatientController::class,'patientantecedent'])->name('patient.patientantecedent');
         Route::get('/detailspatient/{id}', [PatientController::class,'detailspatient'])->name("patient.detailspatient");
         Route::get('/addpatient', [PatientController::class,'formAddPatient'])->name("patient.show");
         Route::post('/savepatient', [PatientController::class,'savePatient'])->name("patient.save");
@@ -51,6 +52,9 @@ Route::middleware("auth")->group(function(){
         Route::get('/editpatient/{patient}', [PatientController::class, 'editpatient'])->name("patient.edit"); 
         /** update */
         Route::put('/updatepatient/{patient}', [PatientController::class, 'updatepatient'])->name('patient.update');
+        /** Rechercher un nodossier du patient */
+        Route::get('/searchpatient', [PatientController::class, 'searchpatient'])->name('patient.searchpatient');
+        Route::get('/filtrepatient', [PatientController::class, 'filtrepatient'])->name('patient.filtrepatient');
     });          
     /* Route pour la gestion des antecedents medicaux */
     Route::prefix('antecedentmedical')->name("antecedentmedical.")->group(function(){
@@ -63,16 +67,27 @@ Route::middleware("auth")->group(function(){
 
     /* Route pour la gestion des medecins */
     Route::prefix('medecin')->name("medecin.")->group(function(){
+
+        Route::get('/filtremedecin', [MedecinController::class, 'filtremedecin'])->name('filtremedecin');
+      
+        Route::get('/searchmedecinbynumber', [MedecinController::class, 'searchmedecinbynumber'])->name('searchmedecinbynumber');
+
         Route::get('/detailsmedecin/{id}', [MedecinController::class,'detailsmedecin'])->name("detailsmedecin");
 
         Route::get('/listmedecin', [MedecinController::class,'listMedecin'])->name("listmedecin");
+
         Route::get('/ajoutermedecin', [MedecinController::class,'formAddMedecin'])->name("showmedecin");
+
         Route::get('/{medecin}', [MedecinController::class,'viewmedecin'])->name("view");
         Route::post('/savemedecin', [MedecinController::class,'savemedecin'])->name("savemedecin");
         /** Edit */
         Route::get('/editmedecin/{medecin}', [MedecinController::class,'editmedecin'])->name("editmedecin");
         /** update */
         Route::put('/updatemedecin/{medecin}', [MedecinController::class, 'updatemedecin'])->name('updatemedecin');
+        /** Search */
+ 
+    
+    
     });
 });
 //});

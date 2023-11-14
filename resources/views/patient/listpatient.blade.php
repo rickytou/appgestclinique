@@ -25,9 +25,9 @@
            <div class="page-utilities">
             <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
               <div class="col-auto">
-                <form class="table-search-form row gx-1 align-items-center">
+                <form class="table-search-form row gx-1 align-items-center" method="GET" action="{{ route('patient.searchpatient') }}">
                           <div class="col-auto">
-                              <input type="text" id="search-orders" name="searchpatient" class="form-control search-orders" placeholder="Rechercher par no dossier">
+                              <input type="text" id="nodossier" name="nodossier" class="form-control search-orders" placeholder="Rechercher par no dossier">
                           </div>
                           <div class="col-auto">
                               <button type="submit" class="btn app-btn-secondary">Rechercher</button>
@@ -36,14 +36,14 @@
                       
               </div><!--//col-->
               <div class="col-auto">
-                
-                <select class="form-select w-auto" >
-                  <option selected value="option-1">All</option>
-                  <option value="option-2">This week</option>
-                  <option value="option-3">This month</option>
-                  <option value="option-4">Last 3 months</option>
-                  
-              </select>
+                <form action="{{ route('patient.filtrepatient') }}" method="GET" id="formfiltre">
+                  <select id="filtre" name="filtre" class="form-select w-auto select">
+                    <option value="tout" {{ !$filtre ? 'selected' : '' }}>Tout</option>
+                    <option value="asc" {{ $filtre === 'asc' ? 'selected' : '' }}>A-Z</option>
+                    <option value="desc" {{ $filtre === 'desc' ? 'selected' : '' }}>Z-A</option>
+                    <option value="daterecent" {{ $filtre === 'daterecent' ? 'selected' : '' }}>Plus récent</option>
+                </select>
+              </form>
               </div>
               <div class="col-auto">						    
                 <a class="btn app-btn-secondary" href=" {{ route("patient.show") }}">
@@ -117,7 +117,7 @@
                 <a class="page-link" href="#">Suivant</a>
             </li>
           </ul>-->
-          {{ $allpatients->links() }}
+         {{ $allpatients->links() }}
         </nav><!--//app-pagination-->
         
           </div><!--//tab-pane-->

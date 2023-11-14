@@ -98,15 +98,25 @@ header{
   // }
 }
 .header .account-login-profil{
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span{
+    font-size: 2.8rem;
+    opacity: 0.3;
+  }
 }
 .header, .mainlist-center-left{
   .account-login{
-    display: flex; gap: 2rem; height: 100%; align-items: center;
+    display: flex; 
+    gap: 1.5rem; 
+    height: 100%; 
+    align-items: center;
   }
   .account-login-profil{
-    width: 6rem;
-    height: 6rem;
+    width: 5rem;
+    height: 5rem;
     overflow: hidden;
     padding: 2rem 0;
     border-radius: 50%;
@@ -518,17 +528,17 @@ footer{
     border: 0.1rem solid rgba($color: #000000, $alpha: 0.05);
     box-shadow: 0 0 1.2rem rgba($color: #000000, $alpha: 0.01);
   }
-  .app-btn-secondary{font-weight: normal; border: 0.1rem solid $bordercontainer; padding: 1rem; transition: color 0.3s ease-in-out;}
+  .app-btn-secondary{font-weight: normal; border: 0.1rem solid $bordercontainer; padding: 1.3rem 1rem; transition: color 0.3s ease-in-out;}
 
   .app-btn-secondary:hover{ color: $couleurprimaire;}
 
   & input, select, button{
-    padding: 1rem;
+    padding: 1.2rem 1rem;
     border: 0.1rem solid $bordercontainer;
   }
   & .col-auto button{
-    background: $couleursecondaire;
-    color: $couleurwhite;
+    font-weight: bold;
+    padding: 1.2rem;
     font-size: 1.2rem;
   }
   .link-details{
@@ -616,7 +626,7 @@ footer{
   & .cpanel-title{
     font-size: 3.2rem;
     font-weight: bold;
-    color: $couleurprimaire;
+    color: $couleursecondaire;
   }
   & .alert-danger{
     font-size: 1.2rem;
@@ -645,7 +655,7 @@ footer{
 .tdimageprofil .imgprofil{
   width: 8rem;
   height: 8rem;
-  padding: 0.5rem;
+  padding: 0.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -657,6 +667,8 @@ footer{
   & img{
     width: 100%;
     height: 100%;
+    border: 0.1rem solid $bordercontainer;
+    border-radius: 0.5rem;
     object-fit: cover;
     object-position: center;
   }
@@ -703,6 +715,7 @@ main.list-view-details .list-view{
   }
   .detailsprofiltop-img{
     width: 20rem;
+    padding: 0.2rem;
     height: 100%;
     border: 0.1rem solid $bordercontainer;
     border-radius: 0.5rem;
@@ -714,7 +727,9 @@ main.list-view-details .list-view{
     & img{
       width: 100%;
       height: 16rem;
-      object-fit: cover;  
+      object-fit: cover;
+      border-radius: 0.5rem;
+      border: 0.1rem solid $bordercontainer;  
       object-position: top center;
     }
   }
@@ -851,6 +866,9 @@ main.list-view-details .list-view{
     font-weight: normal;
   }
  }
+ .select{
+  font-size: 1.2rem;
+ }
 /* Responsive Web Design [Ecran de largeur minimale 576px]*/
 @media screen and (min-width:#{$smallDevice * 1px}) {
   .header{
@@ -867,9 +885,9 @@ main.list-view-details .list-view{
   .list-view{
     padding: 6rem 3rem;
   }
-  .header .account-login-profil{
-    display: block;
-  }
+  // .header .account-login-profil{
+  //   display: block;
+  // }
 
   .wrapper .hero-unit{
     p{

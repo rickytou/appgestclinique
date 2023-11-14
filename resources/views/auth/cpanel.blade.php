@@ -61,7 +61,7 @@
             <label for="motdepasse">Mot de passe</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
           </div>
-          <button type="submit" class="btn btn-primary">Connexion</button>
+          <button type="submit">Connexion</button>
         </form>
     </main>
     <footer>
